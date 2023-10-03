@@ -1,0 +1,49 @@
+{% extends 'stocktracker/base.html' %}
+
+{% block content %}
+    <h2>Edit Product: {{ product.product_name }}</h2>
+    <p><strong>Product Code:</strong> {{ product.product_code }}</p>
+    <div id="graph-container">
+        <!-- Your graph will be rendered here -->
+    </div>
+    <form id="nodeForm">
+        <!-- Render node form fields -->
+        {{ node_form.as_p }}
+    </form>
+    <form id="edgeForm">
+        <!-- Render edge form fields -->
+        {{ edge_form.as_p }}
+    </form>
+
+    <button id="saveChangesBtn">Save Changes</button>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+$(document).ready(function(){
+    // Use Cytoscape.js or another suitable library to render the graph
+    // Initialize graph with existing nodes and edges
+    
+    // Add event listeners to handle form submissions
+    $("#nodeForm").submit(function(e){
+        e.preventDefault();
+        // Handle Node form submission
+        // Make AJAX call to update the node in the database
+        // Update the graph accordingly
+    });
+
+    $("#edgeForm").submit(function(e){
+        e.preventDefault();
+        // Handle Edge form submission
+        // Make AJAX call to update the edge in the database
+        // Update the graph accordingly
+    });
+
+    $("#saveChangesBtn").click(function(){
+        // Handle Save Changes button click
+        // Make AJAX call to save the changes to the database
+    });
+});
+
+    </script>
+{% endblock %}

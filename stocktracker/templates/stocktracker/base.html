@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Stock Tracker{% endblock %}</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'stocktracker/css/bootstrap.min.css' %}">
+    <!-- Include your custom CSS styles -->
+    <link rel="stylesheet" href="{% static 'stocktracker/css/styles.css' %}">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'stocktracker:main_page' %}">Kaan Stok</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="formsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Forms
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="formsDropdown">
+                            <li><a class="dropdown-item" href="{% url 'stocktracker:all_models' %}">All Models</a></li>
+                            <li><a class="dropdown-item" href="{% url 'stocktracker:all_forms' %}">All Forms</a></li>
+                            <li><a class="dropdown-item" href="{% url 'stocktracker:create_new_product' %}">Create New Product</a></li>
+                            <li><a class="dropdown-item" href="{% url 'stocktracker:select_product' %}">Edit Product</a></li>
+                            <li><a class="dropdown-item" href="{% url 'stocktracker:add-personnel' %}">Add Personnel</a></li>
+                            <li><a class="dropdown-item" href="{% url 'stocktracker:add-company' %}">Add Company</a></li>
+                            <!-- Add more form options here as needed -->
+                        </ul>
+                    </li>
+                    {% if user.is_anonymous %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'stocktracker:login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'stocktracker:signup' %}">Signup</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'stocktracker:logout' %}">Logout</a></li>
+                    {% endif %}
+                    <!-- Add more navigation links here -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Include Bootstrap JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'stocktracker/js/bootstrap.bundle.min.js' %}"></script>
+
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+</body>
+</html>

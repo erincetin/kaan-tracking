@@ -1,3 +1,5 @@
 # kaan-tracking
 
-1 - A fullstack Flutter project aimed for production logging from a mobile device to a database.
+A fullstack Django application for stock tracking.
+
+Frontend is developed with ChatGPT.

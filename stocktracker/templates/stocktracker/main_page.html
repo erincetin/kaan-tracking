@@ -1,0 +1,12 @@
+{% extends 'stocktracker/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Main Page</h1>
+    <ul>
+        <li><a href="{% url 'stocktracker:create_new_product' %}">Create New Product</a></li>
+        <li><a href="{% url 'stocktracker:main_page' %}">Main Page</a></li> <!-- Link back to the main page -->
+        <!-- Add more links as needed -->
+    </ul>
+{% endblock %}

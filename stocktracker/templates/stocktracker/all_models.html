@@ -1,0 +1,311 @@
+{% extends 'stocktracker/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>All Models</h1>
+
+    <!-- Display data for the Company model -->
+    <h2>Companies</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Company Name</th>
+                <th>Company Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for company in companys %}
+                <tr>
+                    <td>{{ company.company_id }}</td>
+                    <td>{{ company.company_name }}</td>
+                    <td>{{ company.company_desc }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No companies available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Receipt model -->
+    <h2>Receipts</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Receipt Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receipt in receipts %}
+                <tr>
+                    <td>{{ receipt.receipt_id }}</td>
+                    <td>{{ receipt.receipt_date }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">No receipts available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Product model -->
+    <h2>Products</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Code</th>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.product_id }}</td>
+                    <td>{{ product.product_code }}</td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.product_type }}</td>
+                    <td>{{ product.company }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No products available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the ReceiptProduct model -->
+    <h2>Receipt Products</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Receipt</th>
+                <th>Product</th>
+                <th>Product Quantity</th>
+                <th>Transfer Direction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receiptProduct in receiptProducts %}
+                <tr>
+                    <td>{{ receiptProduct.receipt }}</td>
+                    <td>{{ receiptProduct.product_id }}</td>
+                    <td>{{ receiptProduct.product_quantity }}</td>
+                    <td>{{ receiptProduct.transfer_direction }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No receipt products available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Invoice model -->
+    <h2>Invoices</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Company</th>
+                <th>Transfer Direction</th>
+                <th>Invoice Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+                <tr>
+                    <td>{{ invoice.invoice_id }}</td>
+                    <td>{{ invoice.company }}</td>
+                    <td>{{ invoice.transfer_direction }}</td>
+                    <td>{{ invoice.invoice_date }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No invoices available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the InvoiceReceipt model -->
+    <h2>Invoice Receipts</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Receipt</th>
+                <th>Invoice</th>
+                <th>Invoice Receipt Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoiceReceipt in invoiceReceipts %}
+                <tr>
+                    <td>{{ invoiceReceipt.receipt }}</td>
+                    <td>{{ invoiceReceipt.invoice }}</td>
+                    <td>{{ invoiceReceipt.invoice_receipt_desc }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No invoice receipts available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the FiscalDocument model -->
+    <h2>Fiscal Documents</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fiscal Document Name</th>
+                <th>Company</th>
+                <th>Transfer Direction</th>
+                <th>Fiscal Document Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fiscalDocument in fiscalDocuments %}
+                <tr>
+                    <td>{{ fiscalDocument.fiscal_document_id }}</td>
+                    <td>{{ fiscalDocument.fiscal_document_name }}</td>
+                    <td>{{ fiscalDocument.company }}</td>
+                    <td>{{ fiscalDocument.transfer_direction }}</td>
+                    <td>{{ fiscalDocument.fiscal_document_date }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No fiscal documents available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Personnel model -->
+    <h2>Personnel</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Personnel Name</th>
+                <th>Personnel Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for personnel in personnels %}
+                <tr>
+                    <td>{{ personnel.personnel_id }}</td>
+                    <td>{{ personnel.personnel_name }}</td>
+                    <td>{{ personnel.personnel_desc }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No personnel available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Node model -->
+    <h2>Nodes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Node Type</th>
+                <th>Node Name</th>
+                <th>Node Description</th>
+                <th>Product</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for node in nodes %}
+                <tr>
+                    <td>{{ node.node_id }}</td>
+                    <td>{{ node.node_type }}</td>
+                    <td>{{ node.node_name }}</td>
+                    <td>{{ node.node_desc }}</td>
+                    <td>{{ node.product }}</td>
+                    <td>{{ node.company }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No nodes available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Edge model -->
+    <h2>Edges</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Edge Type</th>
+                <th>Previous Node</th>
+                <th>Next Node</th>
+                <th>Operation Description</th>
+                <th>Coefficient</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for edge in edges %}
+                <tr>
+                    <td>{{ edge.edge_id }}</td>
+                    <td>{{ edge.edge_type }}</td>
+                    <td>{{ edge.prev_node }}</td>
+                    <td>{{ edge.next_node }}</td>
+                    <td>{{ edge.operation_description }}</td>
+                    <td>{{ edge.coefficient }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No edges available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display data for the Manufacturing model -->
+    <h2>Manufacturings</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Personnel</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Quantity</th>
+                <th>Node</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for manufacturing in manufacturings %}
+                <tr>
+                    <td>{{ manufacturing.manufacturing_id }}</td>
+                    <td>{{ manufacturing.personnel }}</td>
+                    <td>{{ manufacturing.start_time }}</td>
+                    <td>{{ manufacturing.end_time }}</td>
+                    <td>{{ manufacturing.quantity }}</td>
+                    <td>{{ manufacturing.node_id }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No manufacturings available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% block content %}
+    <h1>Production Steps Graph for {{ product.name }}</h1>
+    <div id="production-steps-graph">
+        <!-- Insert your graph visualization code here -->
+    </div>
+    <h2>Ending Nodes (Final Intermediates)</h2>
+    <ul>
+        {% for intermediate in intermediates %}
+            <li{% if intermediate.is_final_step %} class="final-step"{% endif %}>
+                {{ intermediate.name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

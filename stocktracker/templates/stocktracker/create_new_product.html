@@ -1,0 +1,75 @@
+{% extends "stocktracker/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="button-container">
+        <button id="edit-product-button">Edit Existing Product</button>
+        <button id="create-product-button">Create New Product</button>
+    </div>
+    
+    <div id="edit-product-section" style="display:none;">
+        <h2>Edit Existing Product</h2>
+        <select id="product-list">
+            <option value="">Select a product</option>
+            <!-- This will be filled by the JavaScript code below during page load -->
+            <div id="cy"></div>
+        </select>
+    </div>
+    
+    <div id="create-product-section" style="display:none;">
+
+        <h2>Create Product</h2>
+
+        <div id="current-product">
+            <!-- This will be filled by the JavaScript code below after successful product creation -->
+        </div>
+    
+        <!-- Product Form -->
+        <form method="post" id="productForm">
+            {% csrf_token %}
+            {{ product_form.as_p }} 
+            <button type="submit" class="btn btn-primary">Create Product</button>
+        </form>
+    
+        <hr>
+    
+        <h2>Graph Editor</h2>
+        <div id="graphArea"></div>  <!-- This area will hold our interactive graph -->
+    
+        <!-- Node Form -->
+        <form method="post" id="nodeForm">
+            {% csrf_token %}
+            {{ node_form.as_p }} 
+            <button type="submit" class="btn btn-primary">Add Node</button>
+        </form>
+    
+        <!-- Edge Form -->
+        <form method="post" id="edgeForm">
+            {% csrf_token %}
+            {{ edge_form.as_p }}
+            <button type="submit" class="btn btn-primary">Add Edge</button>
+        </form>
+    
+        <button id="clearGraph" class="btn btn-warning">Clear Graph</button>
+        <button id="saveGraph" class="btn btn-success">Save Graph</button>
+    </div>
+    
+
+</div>
+
+<script src="https://unpkg.com/cytoscape@3.19.0/dist/cytoscape.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="static/stocktracker/js/graphLibrary.js"></script>
+<script src="static/stocktracker/js/graphInitializer.js"></script>
+<script src="static/stocktracker/js/nodeEdgeManager.js"></script>
+<script src="static/stocktracker/js/eventListenerManager.js"></script>
+<script src="static/stocktracker/js/dataManager.js"></script>
+
+
+
+{% endblock %}
