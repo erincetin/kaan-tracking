@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    
     $("#nodeForm").submit(function(e){
         e.preventDefault();
 
@@ -7,7 +7,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "{% url 'stocktracker:create_new_product' %}",
+            url: $('#create-product-button').data('url'),
             data: formData,
             success: function(response){
                 if(response.status === 'success'){
@@ -41,7 +41,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "{% url 'stocktracker:create_new_product' %}",
+            url: $('#create-product-button').data('url'),
             data: formData,
             success: function(response){
                 if(response.status === 'success'){

@@ -1,23 +1,4 @@
-function populateProductDropdown() {
-    $.ajax({
-        url: '{% url "stocktracker:fetch_products" %}',
-        type: 'GET',
-        success: function(response) {
-            if(response.status === 'success') {
-                let products = response.products;
-                for(let product of products) {
-                    $('#product-list').append(
-                        `<option value="${product.produt_id}">${product.name} (${product.code})</option>`
-                    );
-                }
-            }
-        }
-    });
-}
-
 $(document).ready(function(){
-    
-    populateProductDropdown();
 
     $("#productForm").submit(function(e){
         e.preventDefault();
@@ -28,7 +9,7 @@ $(document).ready(function(){
         // AJAX call to save product
         $.ajax({
             type: "POST",
-            url: "{% url 'stocktracker:create_new_product' %}",
+            url: $('#create-product-button').data('url'),
             data: formData,
             success: function(response){
                 if(response.status === 'success'){

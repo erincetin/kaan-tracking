@@ -57,6 +57,14 @@ def production_steps_graph(request, product_id):
 
 @csrf_exempt
 def create_new_product(request):
+
+    ajax_urls = {
+        'fetch_products': reverse('stocktracker:fetch_products'),
+        'create_new_product': reverse('stocktracker:create_new_product'),
+    }
+
+    print(ajax_urls["fetch_products"])
+
     if request.method == "POST":
         if 'product_code' in request.POST:  # Assuming 'product_code' is one of the fields in ProductForm
             product_form = ProductForm(request.POST)
@@ -88,15 +96,15 @@ def create_new_product(request):
                 edge_form.save()
                 return JsonResponse({'status': 'success', 'message': 'Edge added successfully!'})
 
-    else:
-        product_form = ProductForm()
-        node_form = NodeForm()
-        edge_form = EdgeForm()
+    product_form = ProductForm()
+    node_form = NodeForm()
+    edge_form = EdgeForm()
 
     context = {
         'product_form': product_form,
         'node_form': node_form,
-        'edge_form': edge_form
+        'edge_form': edge_form,
+        'ajax_urls': ajax_urls,
     }
 
     return render(request, 'stocktracker/create_new_product.html', context)

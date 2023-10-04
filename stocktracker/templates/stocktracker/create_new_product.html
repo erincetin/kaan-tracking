@@ -7,11 +7,11 @@
 <div class="container mt-5">
 
     <div class="button-container">
-        <button id="edit-product-button">Edit Existing Product</button>
-        <button id="create-product-button">Create New Product</button>
+        <button id="edit-product-button" data-url="{% url 'stocktracker:fetch_products'%}">Edit Existing Product</button>
+        <button id="create-product-button" data-url="{% url 'stocktracker:create_new_product'%}">Create New Product</button>
     </div>
     
-    <div id="edit-product-section" style="display:none;">
+    <div id="edit-product-section" style="display:none;" data-fetch-url='{% url "stocktracker:fetch_graph_data" %}'>
         <h2>Edit Existing Product</h2>
         <select id="product-list">
             <option value="">Select a product</option>
@@ -64,12 +64,10 @@
 <script src="https://unpkg.com/cytoscape@3.19.0/dist/cytoscape.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="static/stocktracker/js/graphLibrary.js"></script>
-<script src="static/stocktracker/js/graphInitializer.js"></script>
-<script src="static/stocktracker/js/nodeEdgeManager.js"></script>
-<script src="static/stocktracker/js/eventListenerManager.js"></script>
-<script src="static/stocktracker/js/dataManager.js"></script>
-
-
+<script src="{% static 'stocktracker/js/graphLibrary.js' %}"></script>
+<script src="{% static 'stocktracker/js/graphInitializer.js' %}"></script>
+<script src="{% static 'stocktracker/js/nodeEdgeManager.js' %}"></script>
+<script src="{% static 'stocktracker/js/dataManager.js' %}"></script>
+<script src="{% static 'stocktracker/js/eventListenerManager.js' %}"></script>
 
 {% endblock %}

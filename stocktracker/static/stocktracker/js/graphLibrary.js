@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     let cy = cytoscape({
-        container: document.getElementById('graphArea'), // container to render in
+        container: document.getElementById('cy'), // container to render in
 
         style: [ // the stylesheet for the graph
             {
